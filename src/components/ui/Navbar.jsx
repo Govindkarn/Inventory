@@ -11,21 +11,11 @@ const Navbar = () => {
     <div className="bg-gray-800 shadow-md">
       <nav className="max-w-7xl mx-auto px-4 py-3">
         <ul className="flex space-x-6">
-          <li>
-            <NavLink to="/" className={navLinkStyles}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/login" className={navLinkStyles}>
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/logout" className={navLinkStyles}>
-              LogOut
-            </NavLink>
-          </li>
+          <li><NavLink to="/" className={navLinkStyles}>Home</NavLink></li>
+          <li><NavLink to="/products" className={navLinkStyles}>Products</NavLink></li>
+          <li><NavLink to="/cart" className={navLinkStyles}>View Cart</NavLink></li>
+          <li><NavLink to="/login" className={navLinkStyles}>Login</NavLink></li>
+          <li><NavLink to="/logout" className={navLinkStyles}>LogOut</NavLink></li>
         </ul>
       </nav>
     </div>

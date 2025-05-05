@@ -1,49 +1,37 @@
-import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card"; // Make sure the import path is correct
+import React from "react";
 
-function Product() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Failed to fetch products:", err));
-  }, []);
-
+// Product component to show a single product card
+const Product = ({ product, onAddToCart }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-      {products.map((product) => (
-        <Card key={product.id}>
-          <CardHeader>
-            <img
-              src={product.image}
-              alt={product.title}
-              className="h-40 w-full object-contain mb-2"
-            />
-            <CardTitle className="text-base">{product.title}</CardTitle>
-            <CardDescription>{product.category}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm line-clamp-3">{product.description}</p>
-          </CardContent>
-          <CardFooter className="justify-between">
-            <span className="font-semibold text-green-600">${product.price}</span>
-            <button className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
-              Add to Cart
-            </button>
-          </CardFooter>
-        </Card>
-      ))}
+    <div className="border p-4 rounded shadow hover:shadow-lg transition duration-200">
+      {/* Product image */}
+      <img
+        src={product.image}
+        alt={product.title}
+        className="h-40 mx-auto object-contain"
+      />
+
+      {/* Product title */}
+      
+      <h3 className="text-lg font-semibold mt-2 line-clamp-2">
+        {product.title}
+      </h3>
+
+      {/* Category */}
+      <p className="text-sm text-gray-600">{product.category}</p>
+
+      {/* Price */}
+      <p className="font-bold mt-1">${product.price}</p>
+
+      {/* Add to Cart button */}
+      <button
+        onClick={() => onAddToCart(product)}  // Call parent function on click
+        className="mt-3 w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        Add to Cart
+      </button>
     </div>
   );
-}
+};
 
 export default Product;
