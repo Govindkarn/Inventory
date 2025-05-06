@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LogOut = () => {
+const SignIn = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const LogOut = () => {
   )
 }
 
-export default LogOut
+export default SignIn
